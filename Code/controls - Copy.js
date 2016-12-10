@@ -5,7 +5,6 @@ keys = []
 
 Player.prototype.movement = function(){
 
-	if(isStunned == false){
 
 		if(keys[38]){
 			if(this.yVel > -1*this.speed){
@@ -33,7 +32,7 @@ Player.prototype.movement = function(){
 
 	}
 
-}
+
 
 
 document.body.addEventListener('keydown', function (e) {
