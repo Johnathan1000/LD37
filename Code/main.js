@@ -21,14 +21,13 @@ var iMap = new Map5()
 var mMap = new Map6()
 
 //Defining Objects
-var player = new Player(50,50,10*scale,24*scale,100,5)
-var slime = new Enemy(80,200,16*scale,10*scale,10,1,0)
-var apple = new Item(100,300,11*scale,12*scale,'Apple',0)
+var player = new Player(32,32,10,24,100,5)
+var slime = new Enemy(64,16,16,10,10,1,0)
+var apple = new Item(0,64,11,12,'Apple',0)
 
 for(var i = 0; i < oMap.map[oMap.y].length; i++){
-	console.log("b00bs")
 	if(i == 0){
-		var tLWallTile = new Wall(0,0,16*scale,16*scale,0,0)
+		var tLWallTile = new Wall(0,0,16*scale,16*scale,1,0)
 		continue;
 	}
 	if(i >= 1){
@@ -50,11 +49,13 @@ updoot = function(){
 	addVelo = true;
 	//
 	for(var i = 0; i < entities.length; i++){
-		entities[i].draw()
+		//entities[i].draw()
 		entities[i].update()
 		if(entities[i] == player) continue
-		if(futureCollision(entities[i], player)){
-			addVelo = false;
+		if(entities[i].world == currentMap){
+			if(futureCollision(entities[i], player)){
+				addVelo = false;
+			}
 		}
 
 

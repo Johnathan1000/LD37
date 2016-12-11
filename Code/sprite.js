@@ -7,7 +7,7 @@ function Sprite(image, Sx, Sy, width, height) {
   this.image = image;
 }
 
-var scale = 3
+var scale = 4
 
 Sprite.prototype.render = function (x,y) {
   c.drawImage(this.image, this.Sx, this.Sy, this.width, this.height, x,y, this.width*scale, this.height*scale);

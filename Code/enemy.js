@@ -1,9 +1,9 @@
 
 Enemy = function (x,y,width,height,hp,dmg,map){
-	this.x = x
-	this.y = y
-	this.width = width
-	this.height = height
+	this.x = x*scale
+	this.y = y*scale
+	this.width = width*scale
+	this.height = height*scale
 	this.hp = hp
 	this.dmg = dmg
 	this.slimeSprite = new Sprite(enemySprites, 0,0,16,10)

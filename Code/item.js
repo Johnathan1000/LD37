@@ -1,10 +1,10 @@
 
 Item = function(x,y,width,height,name,map){
 	this.name = name
-	this.x = x
-	this.y = y
-	this.width = width
-	this.height = height
+	this.x = x*scale
+	this.y = y*scale
+	this.width = width*scale
+	this.height = height*scale
 	this.appleSprite = new Sprite(itemSprites, 0, 0, 16, 16)
 	this.tlCornerTile = new Sprite(wallSprites, 0, 16, 16,16)
 	this.trCornerTile = new Sprite(wallSprites, 16, 16, 16,16)

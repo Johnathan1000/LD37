@@ -1,23 +1,27 @@
 
 Player = function (x,y,width,height,hp,dmg){
-	this.x = x
-	this.y = y
+	this.x = x*scale
+	this.y = y*scale
 	this.xVel = 0
 	this.yVel = 0
-	this.speed = 3
-	this.width = width
-	this.height = height
+	this.speed = 7
+	this.width = width*scale
+	this.height = height*scale
 	this.hp = hp
 	this.dmg = dmg
 	this.spritef = new Sprite(playerSprites, 0, 0, 10, 24)
 	this.spriteb = new Sprite(playerSprites, 10, 0, 10, 24)
 	this.spritel = new Sprite(playerSprites, 20, 0, 10, 24)
 	this.spriter = new Sprite(playerSprites, 30, 0, 10, 24)
-	this.cube = new Cube(10, 10)
-	this.cubeX = 0
-	this.cubeY = 0
+	this.cube = new Cube(10,10)
+	this.fist = new Cube(15,15)
+	this.fistX = 0
+	this.fistY = 0
+	this.fistWidth = this.fist.width
+	this.fistHeight = this.fist.height
+	this.cubeX = this.x + this.width/2
+	this.cubeY = this.y + this.width/2
 	this.sprite = this.spritef
-	this.name = "Friendly tiities"
 	entities.push(this)
 }
 
@@ -36,8 +40,15 @@ Player.prototype.addFric = function(){
 	this.yVel*=0.80
 }
 
-Player.prototype.update = function(){
+resetFist = function(){
+	this.fistX = 0
+	this.fistY = 0
+	console.log('is reset')
+}
 
+
+Player.prototype.update = function(){
+	this.fist.draw(this.fistX, this.fistY)
 	this.cube.draw(this.cubeX, this.cubeY)
 	this.sprite.render(this.x,this.y)
 	player.movement()

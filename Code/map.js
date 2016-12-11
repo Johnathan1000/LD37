@@ -2,7 +2,7 @@ function newWorld(cm){
     currentMap = cm
 }
 
-var tileScale = 4
+
 tileMap = new Image()
 tileMap.src = 'Images/Tiles.png'
 
@@ -33,11 +33,11 @@ Map.prototype.drawMap = function(){
         for(this.x = 0; this.x < this.map[this.y].length; this.x++){
 
             if(this.map[this.y][this.x] == 0){
-                c.drawImage(tileMap, 0, 16*4, 16, 16, this.x*16*tileScale, this.y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 0, 16*4, 16, 16, this.x*16*scale, this.y*16*scale, 16*scale, 16*scale);
             }
 
             if(this.map[this.y][this.x] == 1){
-                c.drawImage(tileMap, 16, 16*4, 16, 16, this.x*16*tileScale, this.y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 16, 16*4, 16, 16, this.x*16*scale, this.y*16*scale, 16*scale, 16*scale);
             }
 
         }
@@ -65,11 +65,11 @@ Map2.prototype.drawMap = function(){
         for(var x = 0; x < this.map[y].length; x++){
 
             if(this.map[y][x] == 0){
-                c.drawImage(tileMap, 0, 0, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 0, 0, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
             if(this.map[y][x] == 1){
-                c.drawImage(tileMap, 0, 16, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 0, 16, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
         }
@@ -97,11 +97,11 @@ Map3.prototype.drawMap = function(){
         for(var x = 0; x < this.map[y].length; x++){
 
             if(this.map[y][x] == 0){
-                c.drawImage(tileMap, 16, 0, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 16, 0, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
             // if(this.map[y][x] == 1){
-            //     c.drawImage(tileMap, 16, 16, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+            //     c.drawImage(tileMap, 16, 16, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             // }
 
         }
@@ -129,11 +129,11 @@ Map4.prototype.drawMap = function(){
         for(var x = 0; x < this.map[y].length; x++){
 
             if(this.map[y][x] == 0){
-                c.drawImage(tileMap, 16*2, 0, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 16*2, 0, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
             // if(this.map[y][x] == 1){
-            //     c.drawImage(tileMap, 16*2, 16, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+            //     c.drawImage(tileMap, 16*2, 16, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             // }
 
         }
@@ -161,11 +161,11 @@ Map5.prototype.drawMap = function(){
         for(var x = 0; x < this.map[y].length; x++){
 
             if(this.map[y][x] == 0){
-                c.drawImage(tileMap, 16*3, 0, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 16*3, 0, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
             // if(this.map[y][x] == 1){
-            //     c.drawImage(tileMap, 16*3, 16, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+            //     c.drawImage(tileMap, 16*3, 16, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             // }
 
         }
@@ -193,11 +193,11 @@ Map6.prototype.drawMap = function(){
         for(var x = 0; x < this.map[y].length; x++){
 
             if(this.map[y][x] == 0){
-                c.drawImage(tileMap, 16*4, 0, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+                c.drawImage(tileMap, 16*4, 0, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             }
 
             // if(this.map[y][x] == 1){
-            //     c.drawImage(tileMap, 16*4, 16, 16, 16, x*16*tileScale, y*16*tileScale, 16*tileScale, 16*tileScale);
+            //     c.drawImage(tileMap, 16*4, 16, 16, 16, x*16*scale, y*16*scale, 16*scale, 16*scale);
             // }
 
         }
