@@ -15,10 +15,12 @@ Player = function (x,y,width,height,hp,dmg){
 	this.spriter = new Sprite(playerSprites, 30, 0, 10, 24)
 	this.cube = new Cube(10,10)
 	this.fist = new Cube(15,15)
-	this.fistX = 0
-	this.fistY = 0
-	this.fistWidth = this.fist.width
-	this.fistHeight = this.fist.height
+	this.cfist = {
+		width : this.fist.width,
+		height : this.fist.height,
+		x : -300,
+		y : -470
+	}
 	this.cubeX = this.x + this.width/2
 	this.cubeY = this.y + this.width/2
 	this.sprite = this.spritef
@@ -40,15 +42,15 @@ Player.prototype.addFric = function(){
 	this.yVel*=0.80
 }
 
-resetFist = function(){
-	this.fistX = 0
-	this.fistY = 0
-	console.log('is reset')
+	resetFist = function(){
+	player.cfist.x = -100;
+	player.cfist.y = -100;
+
 }
 
 
 Player.prototype.update = function(){
-	this.fist.draw(this.fistX, this.fistY)
+	this.fist.draw(this.cfist.x, this.cfist.y)
 	this.cube.draw(this.cubeX, this.cubeY)
 	this.sprite.render(this.x,this.y)
 	player.movement()

@@ -1,12 +1,17 @@
 
-Enemy = function (x,y,width,height,hp,dmg,map){
+Enemy = function (x,y,width,height,hp,dmg,map,sprNo){
 	this.x = x*scale
 	this.y = y*scale
 	this.width = width*scale
 	this.height = height*scale
+	this.xVel = 0
+	this.yVel = 0
 	this.hp = hp
 	this.dmg = dmg
-	this.slimeSprite = new Sprite(enemySprites, 0,0,16,10)
+	this.spriteNo = sprNo
+	this.sprite = [
+		new Sprite(enemySprites, 0,0,16,10) //0-Slime
+	]
 	this.world = map
 	entities.push(this)
 }
@@ -16,8 +21,16 @@ Enemy.prototype.draw = function(){
 	c.fillRect(this.x, this.y, this.width, this.height)
 }
 
+
 Enemy.prototype.update = function(){
 	if(this.world == currentMap){
-		this.slimeSprite.render(this.x, this.y)
+		if(this.sprite[this.spriteNo] != null){
+			this.sprite[this.spriteNo].render(this.x, this.y)
+		}else{
+			throw "Yo dude - You have an id that doesn't have a sprite. That's an issue."
+		}
+		this.x += this.xVel
+		this.y += this.yVel
+
 	}
 }

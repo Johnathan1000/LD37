@@ -2,6 +2,17 @@
 
 keys = []
 var direction
+var canFist = true
+
+
+function deactivateFists(){
+	canFist = false
+	setTimeout(resetFists, 1000)
+}
+
+function resetFists(){
+	canFist = true
+}
 
 Player.prototype.movement = function(){
 
@@ -27,23 +38,28 @@ Player.prototype.movement = function(){
 		this.cubeY = this.y + this.height/2 - this.cube.height/2;
 	}
 
+	var resetTime = 1
 	var gap = 10
-	var canShoot = true
-	if(canShoot == true){
+
+
+	if(canFist == true){
 		if(keys[32]){
 			if(this.cubeX < this.x){
-				this.fistX = this.x - this.fistWidth - gap;
-				this.fistY = this.y + this.height/2 - this.fistHeight/2;
-				setTimeout(resetFist, 1000)
+				this.cfist.x = this.x - this.fist.width - gap;
+				this.cfist.y = this.y + this.height/2 - this.fist.height/2;
+				setTimeout(resetFist, resetTime)
 			}else if(this.cubeX + this.cube.width > this.x+this.width){
-				this.fistX = this.x + this.width + gap;
-				this.fistY = this.y + this.height/2 - this.fistHeight/2;
+				this.cfist.x = this.x + this.width + gap;
+				this.cfist.y = this.y + this.height/2 - this.fist.height/2;
+				setTimeout(resetFist, resetTime)
 			}else if(this.cubeY < this.y){
-				this.fistX = this.x + this.width/2 - this.fistWidth/2;
-				this.fistY = this.y - this.fistHeight - gap;
+				this.cfist.x = this.x + this.width/2 - this.fist.width/2;
+				this.cfist.y = this.y - this.fist.height - gap;
+				setTimeout(resetFist, resetTime)
 			}else if(this.cubeY + this.cube.height > this.y + this.height){
-				this.fistX = this.x + this.width/2 - this.fistWidth/2;
-				this.fistY = this.y + this.height + gap;
+				this.cfist.x = this.x + this.width/2 - this.fist.width/2;
+				this.cfist.y = this.y + this.height + gap;
+				setTimeout(resetFist, resetTime)
 			}
 		}
 	}

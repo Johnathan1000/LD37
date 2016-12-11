@@ -1,12 +1,11 @@
 
-Wall = function(x,y,width,height,map,spNo){
-	this.name = name
+Wall = function(x,y,width,height,map,sprNo){
 	this.x = x
 	this.y = y
 	this.width = width
 	this.height = height
-	this.spriteNo = spNo
-	this.tiles = [
+	this.spriteNo = sprNo
+	this.sprite = [
 		new Sprite(wallSprites, 0, 16, 16,16),		//0-TLC
 		new Sprite(wallSprites, 16, 16, 16,16),		//1-TRC
 		new Sprite(wallSprites, 0, 0, 16,16),		//2-BLC
@@ -28,10 +27,11 @@ Wall.prototype.draw = function () {
 
 Wall.prototype.update = function (){
 	if(this.world == currentMap){
-		for(var i = 0; i < this.tiles.length; i++){
-			if(this.spriteNo == i){
-				this.tiles[i].render(this.x, this.y)
-			}
+		if(this.sprite[this.spriteNo] != null){
+			this.sprite[this.spriteNo].render(this.x, this.y)
+		}else{
+			throw "Yo dude - You have an id that doesn't have a sprite. That's an issue."
 		}
+
 	}
 };
