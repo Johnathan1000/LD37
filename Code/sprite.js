@@ -21,3 +21,6 @@ enemySprites.src = 'Images/EnemySprites.png'
 
 var itemSprites = new Image()
 itemSprites.src = 'Images/ItemSprites.png'
+
+var wallSprites = new Image()
+wallSprites.src = 'Images/WallSprites.png'

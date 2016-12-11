@@ -1,6 +1,6 @@
 var canvas = document.getElementById("canvas");
-canvas.width = 480
-canvas.height = 480
+canvas.width = 896
+canvas.height = 704
 var c = canvas.getContext("2d")
 
 c.mozImageSmoothingEnabled = false;
@@ -10,20 +10,31 @@ c.imageSmoothingEnabled = false;
 
 var entities = []
 
+//Maps
+currentMap = 0
+maps = []
+var oMap = new Map()
+var wMap = new Map2()
+var cMap = new Map3()
+var pMap = new Map4()
+var iMap = new Map5()
+var mMap = new Map6()
+
 //Defining Objects
 var player = new Player(50,50,10*scale,24*scale,100,5)
-var slime = new Enemy(50,200,16*scale,10*scale,10,1)
-var apple = new Item(100,0,11*scale,12*scale,'Apple')
+var slime = new Enemy(80,200,16*scale,10*scale,10,1,0)
+var apple = new Item(100,300,11*scale,12*scale,'Apple',0)
 
-//Maps
-cMap = 0
-maps = []
-maps.push(OMap.oneRoomMap)
-maps.push(WMap.wastelandMap)
-// maps.push(modernMap)
-// maps.push(primalMap)
-// maps.push(iceAgeMap)
-// maps.push(magmaMap)
+for(var i = 0; i < oMap.map[oMap.y].length; i++){
+	console.log("b00bs")
+	if(i == 0){
+		var tLWallTile = new Wall(0,0,16*scale,16*scale,0,0)
+		continue;
+	}
+	if(i >= 1){
+		var hWalls = new Wall(16*scale*i,0,16*scale,16*scale,0,4)
+	}
+}
 
 
 
@@ -35,8 +46,7 @@ updoot = function(){
 	c.clearRect(0,0,canvas.width,canvas.height);
 	c.translate(Math.round(-camX), Math.round(-camY))
 	//Drawing
-	maps[0].drawMap()
-
+	maps[currentMap].drawMap()
 	addVelo = true;
 	//
 	for(var i = 0; i < entities.length; i++){

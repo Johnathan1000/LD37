@@ -1,5 +1,5 @@
 
-Enemy = function (x,y,width,height,hp,dmg){
+Enemy = function (x,y,width,height,hp,dmg,map){
 	this.x = x
 	this.y = y
 	this.width = width
@@ -7,8 +7,8 @@ Enemy = function (x,y,width,height,hp,dmg){
 	this.hp = hp
 	this.dmg = dmg
 	this.slimeSprite = new Sprite(enemySprites, 0,0,16,10)
+	this.world = map
 	entities.push(this)
-	this.name = "b0000bs yum"
 }
 
 Enemy.prototype.draw = function(){
@@ -17,5 +17,7 @@ Enemy.prototype.draw = function(){
 }
 
 Enemy.prototype.update = function(){
-	this.slimeSprite.render(this.x, this.y)
+	if(this.world == currentMap){
+		this.slimeSprite.render(this.x, this.y)
+	}
 }
