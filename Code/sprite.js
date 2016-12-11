@@ -13,5 +13,11 @@ Sprite.prototype.render = function (x,y) {
   c.drawImage(this.image, this.Sx, this.Sy, this.width, this.height, x,y, this.width*scale, this.height*scale);
 };
 
-var playerF = new Image()
-playerF.src = 'Images/PlayerSprites.png'
+var playerSprites = new Image()
+playerSprites.src = 'Images/PlayerSprites.png'
+
+var enemySprites = new Image()
+enemySprites.src = 'Images/EnemySprites.png'
+
+var itemSprites = new Image()
+itemSprites.src = 'Images/ItemSprites.png'

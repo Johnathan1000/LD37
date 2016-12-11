@@ -9,14 +9,15 @@ Player = function (x,y,width,height,hp,dmg){
 	this.height = height
 	this.hp = hp
 	this.dmg = dmg
-	this.spritef = new Sprite(playerF, 0, 0, 10, 24)
-	this.spriteb = new Sprite(playerF, 10, 0, 10, 24)
-	this.spritel = new Sprite(playerF, 20, 0, 10, 24)
-	this.spriter = new Sprite(playerF, 30, 0, 10, 24)
+	this.spritef = new Sprite(playerSprites, 0, 0, 10, 24)
+	this.spriteb = new Sprite(playerSprites, 10, 0, 10, 24)
+	this.spritel = new Sprite(playerSprites, 20, 0, 10, 24)
+	this.spriter = new Sprite(playerSprites, 30, 0, 10, 24)
 	this.cube = new Cube(10, 10)
 	this.cubeX = 0
 	this.cubeY = 0
 	this.sprite = this.spritef
+	this.name = "Friendly tiities"
 	entities.push(this)
 }
 
@@ -28,19 +29,19 @@ Player.prototype.draw = function (){
 Player.prototype.addVel = function(){
 	this.x += this.xVel
 	this.y += this.yVel
+}
+
+Player.prototype.addFric = function(){
 	this.xVel*=0.80
 	this.yVel*=0.80
 }
-
-
-
-
 
 Player.prototype.update = function(){
 
 	this.cube.draw(this.cubeX, this.cubeY)
 	this.sprite.render(this.x,this.y)
 	player.movement()
-	player.addVel()
+
+	player.addFric()
 
 }
