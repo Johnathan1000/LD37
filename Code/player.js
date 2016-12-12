@@ -8,6 +8,7 @@ Player = function (x,y,width,height,hp,dmg){
 	this.width = width*scale
 	this.height = height*scale
 	this.hp = hp
+	this.maxHp = hp
 	this.dmg = dmg
 	this.spritef = new Sprite(playerSprites, 0, 0, 10, 24)
 	this.spriteb = new Sprite(playerSprites, 10, 0, 10, 24)

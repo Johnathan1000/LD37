@@ -12,6 +12,7 @@ function getItemFromBagByName (name){
 }
 
 function putObjectInBag (object) {
+	console.log(object.name+' has been aquired')
 
 	/*
 		3 part process to putting something in the bag.

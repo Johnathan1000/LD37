@@ -1,9 +1,9 @@
 
 Wall = function(x,y,width,height,map,sprNo){
-	this.x = x
-	this.y = y
-	this.width = width
-	this.height = height
+	this.x = x * scale
+	this.y = y * scale
+	this.width = width * scale
+	this.height = height * scale
 	this.spriteNo = sprNo
 	this.sprite = [
 		new Sprite(wallSprites, 0, 16, 16,16),		//0-TLC
@@ -12,7 +12,8 @@ Wall = function(x,y,width,height,map,sprNo){
 		new Sprite(wallSprites, 32, 0, 16,16),		//3-BRC
 		new Sprite(wallSprites, 16, 0, 16,16),		//4-HORIZONTAL WALL
 		new Sprite(wallSprites, 48, 0, 16,16),		//5-VERTICAL WALL
-		new Sprite(wallSprites, 64, 0, 16,16)		//6-DOOR
+		new Sprite(wallSprites, 64, 0, 16,16),		//6-DOOR
+		new Sprite(itemSprites, 0, 48, 16, 32) 		//7-OLD MAN
 
 	]
 	this.world = map

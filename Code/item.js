@@ -6,8 +6,14 @@ Item = function(x,y,width,height,name,map,sprNo){
 	this.width = width*scale
 	this.height = height*scale
 	this.spriteNo = sprNo
+	this.isItem = true
 	this.sprite = [
-		new Sprite(itemSprites, 0, 0, 16, 16) //0-Apple
+		new Sprite(itemSprites, 0, 0, 16, 16), 		//0-Apple
+		new Sprite(itemSprites, 16, 16, 16, 16),	//1-Radioactive Material
+		new Sprite(itemSprites, 32, 0, 16, 16), 	//2-Mechanical Companents
+		new Sprite(itemSprites, 32, 16, 16, 16),	//3-Ancient Anaconda Venom
+		new Sprite(itemSprites, 32, 32, 16, 16), 	//4-Ice Age Ice Flake
+		new Sprite(itemSprites, 48, 48, 16, 16), 	//5-Fire Cystal
 	]
 
 	this.world = map

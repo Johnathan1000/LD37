@@ -8,33 +8,33 @@ c.webkitImageSmoothingEnabled = false;
 c.msImageSmoothingEnabled = false;
 c.imageSmoothingEnabled = false;
 
+var completable = false
 var entities = []
 var inventory = []
 
 //Maps
 currentMap = 0
-maps = []
-var oMap = new Map()
-var wMap = new Map2()
-var cMap = new Map3()
-var pMap = new Map4()
-var iMap = new Map5()
-var mMap = new Map6()
+var dMap = new Map()
+var dMap = new Map2()
+var dMap = new Map3()
+var dMap = new Map4()
+var dMap = new Map5()
+var dMap = new Map6()
 
 //Defining Objects
-var player = new Player(32,32,10,24,100,5)
-var slime = new Enemy(64,16,16,10,10,1,0,0)
-var apple = new Item(0,64,11,12,'Apple',0,0)
+var player = new Player(80,64,10,24,100,5)
+var slime = new Enemy(64,16,16,10,10,1,'Slime',0,0)
+var apple = new Item(146,146,11,12,'Apple',0,0)
+var wastelandElement = new Item(32,64,11,12,'Radioactive Element',1,1)
+var modernElement = new Item(32,64,11,12,'Mechanical Parts',2,2)
+var primativeElement = new Item(32,64,11,12,'Titanoboa Venom',3,3)
+var iceageElement = new Item(32,64,11,12,'Ice Absolute Zero Ice',4,4)
+var magmaElement= new Item(32,64,11,12,'Magma Gem',5,5)
+var oldMan = new Wall(32,64,11,24,0,7)
+var button = new TeleBox(32,32,12,15)
 
-for(var i = 0; i < oMap.map[oMap.y].length; i++){
-	if(i == 0){
-		var tLWallTile = new Wall(0,0,16*scale,16*scale,0,0)
-		continue;
-	}
-	if(i >= 1){
-		var hWalls = new Wall(16*scale*i,0,16*scale,16*scale,0,4)
-	}
-}
+maps.drawWalls()
+
 
 
 
@@ -61,7 +61,7 @@ updoot = function(){
 			}
 			//Fist Collision With Items
 			if(canFist == true){
-				if(entities[i].name != null){
+				if(entities[i].isItem == true){
 					if(collision(entities[i], player.cfist)){
 						deactivateFists()
 						if(bag.slot == null){
@@ -83,8 +83,8 @@ updoot = function(){
 
 			if(iFrames = false){
 				if(entities[i].hp != null){
-					if(futureCollision(entities[i], player)){
-						console.log('didi')
+					if(plusCollision(entities[i], player)){
+						console.log('enemy attacked player')
 						entityAttack()
 					}
 				}
@@ -93,14 +93,46 @@ updoot = function(){
 
 		}//Affect those in the same map ^
 
-		//Kill if HP is 0
+		//Kill if HP is 0     Also draw Hp bar
 		if(entities[i].hp != null){
+			HealthNotSurpasMax(entities[i])
+			HealthNotSurpasMax(player)
+			drawEHealthBar(entities[i])
+			drawHealthBar(player)
+
 			if(entities[i].hp <= 0){
+				console.log(entities[i].name+' has been slain.')
 				entities.splice(i,1)
 			}
 		}
 
 	}//Afect entities in the for loop ^
+	if(collision(button, player.cfist)){
+		deactivateFists()
+		if(currentMap == 5){
+			currentMap = 0;
+		}else{
+			currentMap++;
+		}
+	}
+
+	if(collision(magmaElement, player.cfist) == true){
+		deactivateFists()
+		completable = false
+		}
+
+
+	if(collision(oldMan, player.cfist)){
+		deactivateFists()
+			if(completable == false){
+				console.log('Hey! You did it! congratulations son, now how about you leave now, you will not like what you see next.')
+			}else{
+				console.log("They say that this is the last Translocation room. A room that can be used to venture through time. centuries ago there were thousands of theses things all over the wordl, but now, there's just one. Say, you look like a springy young fellow, do you recon you could press that button there a few times and find me some ingredients? Come back when you're done.")
+			}
+		}
+
+
+
 	if (addVelo){
 		player.addVel();
 	}else{

@@ -1,5 +1,5 @@
 
-Enemy = function (x,y,width,height,hp,dmg,map,sprNo){
+Enemy = function (x,y,width,height,hp,dmg,name,map,sprNo){
 	this.x = x*scale
 	this.y = y*scale
 	this.width = width*scale
@@ -7,8 +7,10 @@ Enemy = function (x,y,width,height,hp,dmg,map,sprNo){
 	this.xVel = 0
 	this.yVel = 0
 	this.hp = hp
+	this.maxHp = hp
 	this.dmg = dmg
 	this.spriteNo = sprNo
+	this.name = name
 	this.sprite = [
 		new Sprite(enemySprites, 0,0,16,10) //0-Slime
 	]
