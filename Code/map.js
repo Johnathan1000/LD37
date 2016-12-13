@@ -1,15 +1,14 @@
 function newWorld(cm){
     currentMap = cm
     maps.drawWalls()
+    player.x = 17*scale
+    player.y = 16*scale
 }
 
-
-
+var maps = []
 
 tileMap = new Image()
 tileMap.src = 'Images/Tiles.png'
-
-
 
 Map = function(){
     this.map = [
@@ -26,14 +25,15 @@ Map = function(){
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    this.y = 0
     this.x = 0
+    this.y = 0
 
     maps.push(this)
 }
 Map.prototype.drawMap = function(){
 
     for (this.y = 0; this.y < this.map.length; this.y++){
+                            //maps[0].map[maps[0].y].length
         for(this.x = 0; this.x < this.map[this.y].length; this.x++){
 
             if(this.map[this.y][this.x] == 0){

@@ -8,6 +8,7 @@ c.webkitImageSmoothingEnabled = false;
 c.msImageSmoothingEnabled = false;
 c.imageSmoothingEnabled = false;
 
+
 var completable = false
 var entities = []
 var inventory = []
@@ -23,14 +24,15 @@ var dMap = new Map6()
 
 //Defining Objects
 var player = new Player(80,64,10,24,100,5)
-var slime = new Enemy(64,16,16,10,10,1,'Slime',0,0)
+var slime = new Enemy(64,32,16,10,10,1,'Slime',3,0)
 var apple = new Item(146,146,11,12,'Apple',0,0)
 var wastelandElement = new Item(32,64,11,12,'Radioactive Element',1,1)
 var modernElement = new Item(32,64,11,12,'Mechanical Parts',2,2)
-var primativeElement = new Item(32,64,11,12,'Titanoboa Venom',3,3)
+//Venom is dropped by sime
 var iceageElement = new Item(32,64,11,12,'Ice Absolute Zero Ice',4,4)
 var magmaElement= new Item(32,64,11,12,'Magma Gem',5,5)
-var oldMan = new Wall(32,64,11,24,0,7)
+magmaElement.isMagma = true
+var oldMan = new Wall(32,80,11,24,0,7)
 var button = new TeleBox(32,32,12,15)
 
 maps.drawWalls()
@@ -39,12 +41,12 @@ maps.drawWalls()
 
 
 updoot = function(){
-
 	var camX = Math.max(0,player.x - canvas.width/2)
 	var camY = Math.max(0,player.y - canvas.height/2)
 	c.save()
 	c.clearRect(0,0,canvas.width,canvas.height);
 	c.translate(Math.round(-camX), Math.round(-camY))
+
 	//Drawing
 	maps[currentMap].drawMap()
 	addVelo = true;
@@ -55,8 +57,11 @@ updoot = function(){
 
 		if(entities[i] == player) continue
 		if(entities[i].world == currentMap){
-			//Stop moving when collidiong
+			//Stop moving when colliding
 			if(futureCollision(entities[i], player)){
+				addVelo = false;
+			}
+			if(futureCollision(button, player)){
 				addVelo = false;
 			}
 			//Fist Collision With Items
@@ -64,6 +69,9 @@ updoot = function(){
 				if(entities[i].isItem == true){
 					if(collision(entities[i], player.cfist)){
 						deactivateFists()
+						if(entities[i].isMagma == true){
+							completable = true
+						}
 						if(bag.slot == null){
 							putObjectInBag(entities[i]);
 							entities.splice(i,1)
@@ -100,36 +108,39 @@ updoot = function(){
 			drawEHealthBar(entities[i])
 			drawHealthBar(player)
 
-			if(entities[i].hp <= 0){
+			if(slime.hp <= 0){
 				console.log(entities[i].name+' has been slain.')
 				entities.splice(i,1)
+				var primativeElement = new Item(64,32,11,12,'Titanoboa Venom',3,3)
+
 			}
 		}
 
 	}//Afect entities in the for loop ^
+	if(canFist == true){
 	if(collision(button, player.cfist)){
 		deactivateFists()
-		if(currentMap == 5){
-			currentMap = 0;
+		if(currentMap <= 4){
+			newWorld(currentMap+=1)
 		}else{
-			currentMap++;
+			newWorld(0)
 		}
 	}
 
-	if(collision(magmaElement, player.cfist) == true){
-		deactivateFists()
-		completable = false
-		}
-
 
 	if(collision(oldMan, player.cfist)){
+		if(oldMan.world == currentMap){
 		deactivateFists()
 			if(completable == false){
-				console.log('Hey! You did it! congratulations son, now how about you leave now, you will not like what you see next.')
-			}else{
-				console.log("They say that this is the last Translocation room. A room that can be used to venture through time. centuries ago there were thousands of theses things all over the wordl, but now, there's just one. Say, you look like a springy young fellow, do you recon you could press that button there a few times and find me some ingredients? Come back when you're done.")
+				document.getElementById('text').innerHTML = "They say that this is the last Translocation room in existance. A room that can be used to venture through time. Centuries ago there were thousands of theses things all over the world, but now, there's just one. Say, you look like a spritely young fellow, do you recon you could press that button there a few times and find me some ingredients? Come back when you're done."
+			}
+			if(completable == true){
+				console.log('Game Win') 
+				document.getElementById('text').innerHTML = 'Hey! You did it! congratulations son, now how about you leave now, you will not like what you see next.'
 			}
 		}
+		}
+	}
 
 
 

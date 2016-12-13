@@ -33,17 +33,19 @@ var hpLength = 2
 var EhpLength = 3
 
 drawHealthBar = function(a){
-	c.fillStyle = 'red'
-	c.fillRect(a.x - a.width/hpLength, a.y - hpGapUp*2, a.width/hpLength*4, hpGapUp)
-	c.fillStyle = 'green'
-	c.fillRect(a.x - a.width/hpLength, a.y - hpGapUp*2, (a.width/hpLength*4)*(a.hp/a.maxHp), hpGapUp)
-
+	if(a.world == currentMap){
+		c.fillStyle = 'red'
+		c.fillRect(a.x - a.width/hpLength, a.y - hpGapUp*2, a.width/hpLength*4, hpGapUp)
+		c.fillStyle = 'green'
+		c.fillRect(a.x - a.width/hpLength, a.y - hpGapUp*2, (a.width/hpLength*4)*(a.hp/a.maxHp), hpGapUp)
+	}
 }
 
 drawEHealthBar = function(a){
-	c.fillStyle = 'red'
-	c.fillRect(a.x - a.width/EhpLength, a.y - EhpGapUp*2, a.width/EhpLength*4, EhpGapUp)
-	c.fillStyle = 'green'
-	c.fillRect(a.x - a.width/EhpLength, a.y - EhpGapUp*2, (a.width/EhpLength*4)*(a.hp/a.maxHp), EhpGapUp)
-
+	if(a.world == currentMap){
+		c.fillStyle = 'red'
+		c.fillRect(a.x - a.width/EhpLength, a.y - EhpGapUp*2, a.width/EhpLength*4, EhpGapUp)
+		c.fillStyle = 'green'
+		c.fillRect(a.x - a.width/EhpLength, a.y - EhpGapUp*2, (a.width/EhpLength*4)*(a.hp/a.maxHp), EhpGapUp)
+	}
 }

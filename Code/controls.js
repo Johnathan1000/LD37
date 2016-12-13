@@ -38,7 +38,7 @@ Player.prototype.movement = function(){
 		this.cubeY = this.y + this.height/2 - this.cube.height/2;
 	}
 
-	var resetTime = 1
+	var resetTime = 500
 	var gap = 10
 
 

@@ -4,6 +4,7 @@ TeleBox = function (x,y,width,height){
 	this.y = y*scale
 	this.width = width*scale
 	this.height = height*scale
+	this.world = currentMap
 	this.sprite = new Sprite(wallSprites,32,16,12,15)
 	entities.push(this)
 }
